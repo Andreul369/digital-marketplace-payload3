@@ -57,23 +57,13 @@
 
   body {
     @apply bg-background text-foreground;
-    font-feature-settings: 'rlig' 1, 'calt' 1;
+    font-feature-settings:
+      'rlig' 1,
+      'calt' 1;
   }
 
   .container {
     @apply max-sm:px-4;
-  }
-}
-
-article {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  padding: 60px 80px;
-
-  @media screen and (max-width: 600px) {
-    padding: 40px 40px;
   }
 }
 
@@ -87,103 +77,6 @@ article {
   font-weight: 300;
   text-transform: uppercase;
   letter-spacing: 2.6px;
-}
-
-h1 {
-  color: #ffffff;
-  font-size: 4rem;
-  font-weight: 600;
-  line-height: normal;
-  letter-spacing: -0.02rem;
-  margin: 0;
-
-  @media screen and (max-width: 600px) {
-    font-size: 2rem;
-  }
-}
-
-p {
-  color: #ffffff;
-  font-size: 16px;
-  font-weight: 300;
-  line-height: 28px;
-  margin: 0;
-}
-
-a {
-  color: #ffffff;
-  text-decoration: underline;
-  transition: color 0.2s ease-out;
-
-  &:hover {
-    color: #ffffff80;
-  }
-}
-
-.codeBlock {
-  position: relative;
-  background-color: #00000066;
-  margin: 0;
-  padding: 0;
-
-  pre {
-    margin: 0;
-    padding: 60px 80px;
-    overflow-x: auto;
-
-    @media screen and (max-width: 600px) {
-      padding: 40px 40px;
-    }
-
-    &::before {
-      content: '';
-      display: block;
-      position: absolute;
-      top: 0;
-      left: calc(50% - 50vw);
-      width: 100vw;
-      height: 1px;
-      background: linear-gradient(90deg, #ffffff00, #ffffff1a, #ffffff1a, #ffffff00);
-      z-index: 1;
-    }
-
-    &::after {
-      content: url('/crosshair.svg');
-      display: block;
-      height: 19px;
-      width: 19px;
-      position: absolute;
-      top: -9px;
-      left: -10px;
-    }
-  }
-
-  code {
-    font-size: 14px;
-    line-height: 2;
-  }
-
-  &::before {
-    content: '';
-    display: block;
-    position: absolute;
-    bottom: 0;
-    left: calc(50% - 50vw);
-    width: 100vw;
-    height: 1px;
-    background: linear-gradient(90deg, #ffffff00, #ffffff1a, #ffffff1a, #ffffff00);
-    z-index: 1;
-  }
-
-  &::after {
-    content: url('/crosshair.svg');
-    display: block;
-    height: 19px;
-    width: 19px;
-    position: absolute;
-    bottom: -9px;
-    right: -10px;
-  }
 }
 
 .background {

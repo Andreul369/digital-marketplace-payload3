@@ -5,6 +5,9 @@ import './globals.scss';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 
+import { ThemeProvider } from '@/components/theme/theme-provider';
+import { Toaster } from '@/components/ui';
+
 export const metadata: Metadata = {
   title: 'Digital Marketplace',
   description:
@@ -21,9 +24,12 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
     <html className={inter.className}>
       <body className="relative flex min-h-screen flex-col items-center justify-center antialiased">
-        <main className="flex min-h-screen max-w-7xl flex-col items-center justify-center">
-          {children}
-        </main>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <main className="flex min-h-screen max-w-7xl flex-col items-center justify-center">
+            {children}
+          </main>
+        </ThemeProvider>
+        <Toaster />
       </body>
     </html>
   );
