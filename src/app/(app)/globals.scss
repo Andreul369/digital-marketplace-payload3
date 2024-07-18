@@ -1,0 +1,238 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+// @layer base {
+//   /* old color for dark --foreground: 240 24.3% 7.3%; */
+//   :root {
+//     --background: 0 0% 100%;
+//     --foreground: 240 24.3% 7.3%;
+//     --card: 0 0% 100%;
+//     --card-foreground: 240 24.3% 7.3%;
+//     --popover: 0 0% 100%;
+//     --popover-foreground: 240 24.3% 7.3%;
+//     --primary: 240 5.9% 10%;
+//     --primary-foreground: 0 0% 98%;
+//     --secondary: 240 4.8% 95.9%;
+//     --secondary-foreground: 240 5.9% 10%;
+//     --muted: 240 4.8% 95.9%;
+//     --muted-foreground: 240 3.8% 46.1%;
+//     --accent: 240 4.8% 95.9%;
+//     --accent-foreground: 240 5.9% 10%;
+//     --destructive: 0 84.2% 60.2%;
+//     --destructive-foreground: 0 0% 98%;
+//     --border: 240 5.9% 90%;
+//     --input: 240 5.9% 90%;
+//     --ring: 240 5.9% 10%;
+//     --radius: 0.75rem;
+//   }
+
+//   .dark {
+//     --background: 240 24.3% 7.3%;
+//     --foreground: 0 0% 98%;
+//     --card: 240 24.3% 7.3%;
+//     --card-foreground: 0 0% 98%;
+//     --popover: 240 24.3% 7.3%;
+//     --popover-foreground: 0 0% 98%;
+//     --primary: 0 0% 98%;
+//     --primary-foreground: 240 5.9% 10%;
+//     --secondary: 240 3.7% 15.9%;
+//     --secondary-foreground: 0 0% 98%;
+//     --muted: 240 3.7% 15.9%;
+//     --muted-foreground: 240 5% 64.9%;
+//     --accent: 240 3.7% 15.9%;
+//     --accent-foreground: 0 0% 98%;
+//     --destructive: 0 62.8% 30.6%;
+//     --destructive-foreground: 0 0% 98%;
+//     --border: 240 3.7% 15.9%;
+//     --input: 240 3.7% 15.9%;
+//     --ring: 240 4.9% 83.9%;
+//   }
+// }
+
+@layer base {
+  * {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: 'rlig' 1, 'calt' 1;
+  }
+
+  .container {
+    @apply max-sm:px-4;
+  }
+}
+
+main {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  min-height: 100vh;
+  max-width: 800px;
+  margin: 0 auto;
+  padding-block: 80px;
+  border-inline-width: 1px;
+  border-inline-style: solid;
+  border-image: linear-gradient(180deg, #ffffff00, #ffffff00, #ffffff1a, #ffffff00) 1;
+
+  @media screen and (max-width: 600px) {
+    padding-block: 20px;
+  }
+}
+
+article {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 60px 80px;
+
+  @media screen and (max-width: 600px) {
+    padding: 40px 40px;
+  }
+}
+
+.badge {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #fff;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 2.6px;
+}
+
+h1 {
+  color: #ffffff;
+  font-size: 4rem;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: -0.02rem;
+  margin: 0;
+
+  @media screen and (max-width: 600px) {
+    font-size: 2rem;
+  }
+}
+
+p {
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 28px;
+  margin: 0;
+}
+
+a {
+  color: #ffffff;
+  text-decoration: underline;
+  transition: color 0.2s ease-out;
+
+  &:hover {
+    color: #ffffff80;
+  }
+}
+
+.codeBlock {
+  position: relative;
+  background-color: #00000066;
+  margin: 0;
+  padding: 0;
+
+  pre {
+    margin: 0;
+    padding: 60px 80px;
+    overflow-x: auto;
+
+    @media screen and (max-width: 600px) {
+      padding: 40px 40px;
+    }
+
+    &::before {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 0;
+      left: calc(50% - 50vw);
+      width: 100vw;
+      height: 1px;
+      background: linear-gradient(90deg, #ffffff00, #ffffff1a, #ffffff1a, #ffffff00);
+      z-index: 1;
+    }
+
+    &::after {
+      content: url('/crosshair.svg');
+      display: block;
+      height: 19px;
+      width: 19px;
+      position: absolute;
+      top: -9px;
+      left: -10px;
+    }
+  }
+
+  code {
+    font-size: 14px;
+    line-height: 2;
+  }
+
+  &::before {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: calc(50% - 50vw);
+    width: 100vw;
+    height: 1px;
+    background: linear-gradient(90deg, #ffffff00, #ffffff1a, #ffffff1a, #ffffff00);
+    z-index: 1;
+  }
+
+  &::after {
+    content: url('/crosshair.svg');
+    display: block;
+    height: 19px;
+    width: 19px;
+    position: absolute;
+    bottom: -9px;
+    right: -10px;
+  }
+}
+
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+
+  div.blur {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url('/blur.png');
+    background-repeat: repeat;
+    background-size: 400px 400px;
+    background-blend-mode: soft-light, normal;
+    backdrop-filter: blur(60px);
+  }
+
+  div.gradient {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url('/gradient.webp');
+    background-size: cover;
+    background-position: center;
+    z-index: -2;
+  }
+}
