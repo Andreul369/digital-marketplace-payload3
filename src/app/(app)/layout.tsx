@@ -18,7 +18,11 @@ const inter = Inter({
 const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
     <html className={inter.className}>
-      <body className="min-h-screen antialiased">{children}</body>
+      <body className="min-h-screen antialiased">
+        <main className="flex min-h-screen max-w-7xl flex-col items-center justify-center">
+          {children}
+        </main>
+      </body>
     </html>
   )
 }
