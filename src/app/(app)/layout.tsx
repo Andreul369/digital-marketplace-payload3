@@ -18,7 +18,7 @@ const inter = Inter({
 const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
     <html className={inter.className}>
-      <body className="antialiased">{children}</body>
+      <body className="min-h-screen antialiased">{children}</body>
     </html>
   )
 }

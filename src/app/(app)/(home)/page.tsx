@@ -6,7 +6,7 @@ import React from 'react'
 const Page = () => {
   return (
     <>
-      <main>
+      <main className="flex min-h-screen max-w-7xl flex-col items-center justify-center">
         <article className="max-w-[800px]">
           <Badge />
           <h1>Payload 3.0</h1>
