@@ -65,25 +65,6 @@
   }
 }
 
-main {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 100%;
-  min-height: 100vh;
-  max-width: 800px;
-  margin: 0 auto;
-  padding-block: 80px;
-  border-inline-width: 1px;
-  border-inline-style: solid;
-  border-image: linear-gradient(180deg, #ffffff00, #ffffff00, #ffffff1a, #ffffff00) 1;
-
-  @media screen and (max-width: 600px) {
-    padding-block: 20px;
-  }
-}
-
 article {
   position: relative;
   display: flex;
