@@ -1,3 +1,5 @@
+export { Avatar, AvatarImage, AvatarFallback } from './avatar';
+
 export { Button, buttonVariants } from './button';
 
 export {

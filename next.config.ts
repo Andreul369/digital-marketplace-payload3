@@ -1,7 +1,7 @@
-import { withPayload } from '@payloadcms/next/withPayload'
+import type { NextConfig } from 'next';
+import { withPayload } from '@payloadcms/next/withPayload';
 
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+const nextConfig: NextConfig = {
   // Your Next.js config here
   experimental: {
     reactCompiler: false,
@@ -9,6 +9,6 @@ const nextConfig = {
   images: {
     remotePatterns: [{ protocol: 'https', hostname: 'images.unsplash.com' }],
   },
-}
+};
 
-export default withPayload(nextConfig)
+export default withPayload(nextConfig);
