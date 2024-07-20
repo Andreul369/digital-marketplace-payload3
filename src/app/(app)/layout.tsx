@@ -5,7 +5,8 @@ import './globals.scss';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 
-import { Navbar } from '@/components/navbar';
+import { SiteFooter } from '@/components/footer';
+import Navbar from '@/components/nav/nav-bar';
 import { ThemeProvider } from '@/components/theme/theme-provider';
 import { Toaster } from '@/components/ui';
 
@@ -26,10 +27,11 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     <html className={inter.className}>
       <body className="relative flex min-h-screen flex-col items-center justify-center antialiased">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <Navbar />
           <main className="flex min-h-screen max-w-7xl flex-col items-center justify-center">
-            <Navbar />
             {children}
           </main>
+          <SiteFooter />
         </ThemeProvider>
         <Toaster />
       </body>
