@@ -54,6 +54,18 @@ export { Input } from './input';
 
 export { Label } from './label';
 
+export {
+  // navigationMenuTriggerStyle,
+  NavigationMenu,
+  NavigationMenuList,
+  NavigationMenuItem,
+  NavigationMenuContent,
+  NavigationMenuTrigger,
+  NavigationMenuLink,
+  NavigationMenuIndicator,
+  NavigationMenuViewport,
+} from './navigation-menu';
+
 export { ScrollArea, ScrollBar } from './scrollarea';
 
 export {

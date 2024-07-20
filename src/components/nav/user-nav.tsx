@@ -8,11 +8,13 @@ import {
   User,
 } from 'lucide-react';
 
+import * as Icons from '@/components/icons';
 import {
   Avatar,
   AvatarFallback,
   AvatarImage,
   Button,
+  buttonVariants,
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuGroup,
@@ -24,19 +26,15 @@ import {
 } from '@/components/ui';
 
 export const UserNav = async () => {
-  //   if (!user) {
-  //     return (
-  //       <Link href="/signin">
-  //         <Button variant="ghost" className="relative size-8 rounded">
-  //           <Avatar className="size-8">
-  //             <AvatarFallback className="bg-transparent">
-  //               <LogIn className="h-6 w-6" />
-  //             </AvatarFallback>
-  //           </Avatar>
-  //         </Button>
-  //       </Link>
-  //     );
-  //   }
+  const user = false;
+
+  if (!user) {
+    return (
+      <Link href="/signin" className={buttonVariants({ variant: 'outline' })}>
+        Sign In <Icons.ChevronRight className="ml-1 size-4" />
+      </Link>
+    );
+  }
 
   //   const fullname = `${user.firstName} ${user.lastName}`;
   //   const initials = fullname
