@@ -1,12 +1,5 @@
 import Link from 'next/link';
-import {
-  CreditCard,
-  LogIn,
-  LogOut,
-  PlusCircle,
-  Settings,
-  User,
-} from 'lucide-react';
+import { CreditCard, LogOut, PlusCircle, Settings, User } from 'lucide-react';
 
 import * as Icons from '@/components/icons';
 import {

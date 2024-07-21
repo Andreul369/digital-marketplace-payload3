@@ -1,113 +1,90 @@
 'use client';
 
 import * as React from 'react';
-import { Route } from 'next';
 import Link, { LinkProps } from 'next/link';
 import { useRouter } from 'next/navigation';
 
 import * as Icons from '@/components/icons';
 import {
   Button,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuTrigger,
   ScrollArea,
   Sheet,
   SheetContent,
   SheetTrigger,
 } from '@/components/ui';
+import { mobileNav } from '@/config/navConfig';
 // import { docsConfig } from '@/config/docs';
 // import { siteConfig } from '@/config/site';
 import { cn } from '@/lib/utils';
+import { Search } from './search';
+import { UserNav } from './user-nav';
 
-export const navItems = [
-  {
-    href: '/uikits',
-    title: 'UI Kits',
-  },
-  {
-    href: '/icons',
-    title: 'Icons',
-  },
-  {
-    href: '/dashboard',
-    title: 'Products',
-  },
-  {
-    href: '/dashboard',
-    title: 'Settings',
-  },
-] satisfies { href: Route; title: string }[];
+const ListItem = React.forwardRef<
+  React.ComponentRef<'a'>,
+  React.ComponentPropsWithoutRef<'a'>
+>(({ className, title, children, ...props }, ref) => {
+  return (
+    <li>
+      <NavigationMenuLink asChild>
+        <a
+          ref={ref}
+          className={cn(
+            'block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground',
+            className,
+          )}
+          {...props}
+        >
+          <div className="text-sm font-medium leading-none">{title}</div>
+          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+            {children}
+          </p>
+        </a>
+      </NavigationMenuLink>
+    </li>
+  );
+});
+ListItem.displayName = 'ListItem';
 
 export function MobileNav() {
   const [open, setOpen] = React.useState(false);
 
   return (
-    <Sheet open={open} onOpenChange={setOpen}>
-      <SheetTrigger asChild>
-        <Button
-          variant="ghost"
-          className="mr-2 px-0 text-base hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 md:hidden"
-        >
-          <svg
-            strokeWidth="1.5"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-5 w-5"
+    <div className="flex w-full items-center justify-between border-b p-2">
+      <Link href="/">
+        <Icons.Logo className="size-6" />
+      </Link>
+      <Search />
+      <React.Suspense>
+        <UserNav />
+      </React.Suspense>
+      <Sheet open={open} onOpenChange={setOpen}>
+        <SheetTrigger asChild>
+          <Button
+            variant="ghost"
+            className="mr-2 px-0 text-base hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 md:hidden"
           >
-            <path
-              d="M3 5H11"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            ></path>
-            <path
-              d="M3 12H16"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            ></path>
-            <path
-              d="M3 19H21"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            ></path>
-          </svg>
-          <span className="sr-only">Toggle Menu</span>
-        </Button>
-      </SheetTrigger>
-      <SheetContent side="left" className="pr-0">
-        <MobileLink
-          href="/"
-          className="flex items-center"
-          onOpenChange={setOpen}
-        >
-          <Icons.Logo className="mr-2 h-4 w-4" />
-          {/* <span className="font-bold">{siteConfig.name}</span> */}
-        </MobileLink>
-        <ScrollArea className="my-4 h-[calc(100vh-8rem)] pb-10 pl-6">
-          <div className="flex flex-col space-y-3">
-            {navItems.map(
-              (item) =>
-                item.href && (
-                  <MobileLink
-                    key={item.href}
-                    href={item.href}
-                    onOpenChange={setOpen}
-                  >
-                    {item.title}
-                  </MobileLink>
-                ),
-            )}
-          </div>
-          <div className="flex flex-col space-y-2">
-            {navItems.map((item, index) => (
-              <div key={index} className="flex flex-col space-y-3 pt-6">
-                <h4 className="font-medium">{item.title}</h4>
-                {/* {item?.items?.length &&
-                  item.items.map((item) => (
+            <Icons.Menu />
+          </Button>
+        </SheetTrigger>
+        <SheetContent side="right" className="pr-0">
+          <MobileLink
+            href="/"
+            className="flex items-center"
+            onOpenChange={setOpen}
+          >
+            <Icons.Logo className="mr-2 size-6" />
+            {/* <span className="font-bold">{siteConfig.name}</span> */}
+          </MobileLink>
+          <ScrollArea className="my-4 h-[calc(100vh-8rem)] pb-10 pl-6">
+            <div className="flex flex-col space-y-2">
+              {mobileNav.map((item, index) => (
+                <div key={index} className="flex flex-col space-y-3 pt-6">
+                  <h4 className="font-medium">{item.title}</h4>
+                  {item.items.map((item) => (
                     <React.Fragment key={item.href}>
                       {!item.disabled &&
                         (item.href ? (
@@ -127,13 +104,14 @@ export function MobileNav() {
                           item.title
                         ))}
                     </React.Fragment>
-                  ))} */}
-              </div>
-            ))}
-          </div>
-        </ScrollArea>
-      </SheetContent>
-    </Sheet>
+                  ))}
+                </div>
+              ))}
+            </div>
+          </ScrollArea>
+        </SheetContent>
+      </Sheet>
+    </div>
   );
 }
 

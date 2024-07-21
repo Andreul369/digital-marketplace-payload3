@@ -1,5 +1,4 @@
 import React from 'react';
-import { Route } from 'next';
 import Link from 'next/link';
 
 import {
@@ -10,52 +9,15 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from '@/components/ui';
+import { desktopNav } from '@/config/navConfig';
 import { cn } from '@/lib/utils';
 import * as Icons from '../icons';
 import { Search } from './search';
 import { UserNav } from './user-nav';
 
-const components: { title: string; href: Route; description: string }[] = [
-  {
-    title: 'Alert Dialog',
-    href: '/docs/primitives/alert-dialog',
-    description:
-      'A modal dialog that interrupts the user with important content and expects a response.',
-  },
-  {
-    title: 'Hover Card',
-    href: '/docs/primitives/hover-card',
-    description:
-      'For sighted users to preview content available behind a link.',
-  },
-  {
-    title: 'Progress',
-    href: '/docs/primitives/progress',
-    description:
-      'Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.',
-  },
-  {
-    title: 'Scroll-area',
-    href: '/docs/primitives/scroll-area',
-    description: 'Visually or semantically separates content.',
-  },
-  {
-    title: 'Tabs',
-    href: '/docs/primitives/tabs',
-    description:
-      'A set of layered sections of content—known as tab panels—that are displayed one at a time.',
-  },
-  {
-    title: 'Tooltip',
-    href: '/docs/primitives/tooltip',
-    description:
-      'A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.',
-  },
-];
-
 const Navbar = () => {
   return (
-    <NavigationMenu className="border-b py-3">
+    <NavigationMenu className="hidden w-full border-b py-3 md:flex">
       <Link href="/">
         <Icons.Logo />
       </Link>
@@ -113,7 +75,7 @@ const Navbar = () => {
           <NavigationMenuTrigger>Icons</NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
-              {components.map((component) => (
+              {desktopNav.map((component) => (
                 <ListItem
                   key={component.title}
                   title={component.title}
