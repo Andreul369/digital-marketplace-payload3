@@ -53,7 +53,7 @@ export function MobileNav() {
   const [open, setOpen] = React.useState(false);
 
   return (
-    <div className="flex w-full items-center justify-between border-b p-2">
+    <div className="flex w-full items-center justify-between border-b p-2 md:hidden">
       <Link href="/">
         <Icons.Logo className="size-6" />
       </Link>
@@ -61,6 +61,7 @@ export function MobileNav() {
       <React.Suspense>
         <UserNav />
       </React.Suspense>
+      <Icons.ShoppingCart className="size-6" />
       <Sheet open={open} onOpenChange={setOpen}>
         <SheetTrigger asChild>
           <Button
