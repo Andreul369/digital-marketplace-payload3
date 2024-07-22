@@ -78,6 +78,8 @@ export {
   SelectValue,
 } from './select';
 
+export { Separator } from './separator';
+
 export {
   Sheet,
   SheetPortal,

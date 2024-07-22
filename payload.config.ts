@@ -1,7 +1,6 @@
-import path from 'path'
-// import { mongooseAdapter } from '@payloadcms/db-mongodb'
-import { postgresAdapter } from '@payloadcms/db-postgres'
-import { en } from 'payload/i18n/en'
+import path from 'path';
+import { fileURLToPath } from 'url';
+import { postgresAdapter } from '@payloadcms/db-postgres';
 import {
   AlignFeature,
   BlockquoteFeature,
@@ -19,17 +18,22 @@ import {
   RelationshipFeature,
   UnorderedListFeature,
   UploadFeature,
-} from '@payloadcms/richtext-lexical'
+} from '@payloadcms/richtext-lexical';
+import { s3Storage } from '@payloadcms/storage-s3';
 //import { slateEditor } from '@payloadcms/richtext-slate'
 
-import { buildConfig } from 'payload'
-import sharp from 'sharp'
-import { fileURLToPath } from 'url'
-import { s3Storage } from '@payloadcms/storage-s3'
-import { MediaCollection, PagesCollection, UsersCollection } from '@/collections'
+import { buildConfig } from 'payload';
+import { en } from 'payload/i18n/en';
+import sharp from 'sharp';
 
-const filename = fileURLToPath(import.meta.url)
-const dirname = path.dirname(filename)
+import {
+  MediaCollection,
+  PagesCollection,
+  UsersCollection,
+} from '@/collections';
+
+const filename = fileURLToPath(import.meta.url);
+const dirname = path.dirname(filename);
 
 export default buildConfig({
   //editor: slateEditor({}),
@@ -39,9 +43,6 @@ export default buildConfig({
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),
   },
-  // db: mongooseAdapter({
-  //   url: process.env.MONGODB_URI || '',
-  // }),
   db: postgresAdapter({
     pool: {
       connectionString: process.env.POSTGRES_URI || '',
@@ -67,7 +68,6 @@ export default buildConfig({
       },
     }),
   ],
-
   /**
    * Payload can now accept specific translations from 'payload/i18n/en'
    * This is completely optional and will default to English if not provided
@@ -87,7 +87,7 @@ export default buildConfig({
     const existingUsers = await payload.find({
       collection: 'users',
       limit: 1,
-    })
+    });
 
     if (existingUsers.docs.length === 0) {
       await payload.create({
@@ -96,7 +96,7 @@ export default buildConfig({
           email: 'dev@payloadcms.com',
           password: 'test',
         },
-      })
+      });
     }
   },
   // Sharp is now an optional dependency -
@@ -106,4 +106,4 @@ export default buildConfig({
   // This is temporary - we may make an adapter pattern
   // for this before reaching 3.0 stable
   sharp,
-})
+});

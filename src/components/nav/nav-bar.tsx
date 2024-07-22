@@ -13,6 +13,7 @@ import { desktopNav } from '@/config/navConfig';
 import { cn } from '@/lib/utils';
 import * as Icons from '../icons';
 import { Search } from './search';
+import { ShoppingCart } from './shopping-cart';
 import { UserNav } from './user-nav';
 
 const Navbar = () => {
@@ -91,6 +92,7 @@ const Navbar = () => {
       <div className="ml-auto flex items-center space-x-4">
         <Search />
         <UserNav />
+        <ShoppingCart />
       </div>
     </NavigationMenu>
   );

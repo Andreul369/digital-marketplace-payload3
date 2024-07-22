@@ -21,6 +21,7 @@ import { mobileNav } from '@/config/navConfig';
 // import { siteConfig } from '@/config/site';
 import { cn } from '@/lib/utils';
 import { Search } from './search';
+import { ShoppingCart } from './shopping-cart';
 import { UserNav } from './user-nav';
 
 const ListItem = React.forwardRef<
@@ -61,7 +62,7 @@ export function MobileNav() {
       <React.Suspense>
         <UserNav />
       </React.Suspense>
-      <Icons.ShoppingCart className="size-6" />
+      <ShoppingCart />
       <Sheet open={open} onOpenChange={setOpen}>
         <SheetTrigger asChild>
           <Button

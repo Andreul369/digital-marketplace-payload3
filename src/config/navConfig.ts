@@ -141,7 +141,7 @@ export const mobileNav = [
         items: [],
       },
       {
-        title: 'Skeleton',
+        title: 'Zskeleton',
         href: '/docs/components/skeleton',
         items: [],
       },
