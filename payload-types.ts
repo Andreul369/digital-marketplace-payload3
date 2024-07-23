@@ -17,6 +17,9 @@ export interface Config {
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
   };
+  db: {
+    defaultIDType: number;
+  };
   globals: {};
   locale: null;
   user: User & {
@@ -142,6 +145,7 @@ export interface PayloadMigration {
 export interface Auth {
   [k: string]: unknown;
 }
+
 
 declare module 'payload' {
   export interface GeneratedTypes extends Config {}

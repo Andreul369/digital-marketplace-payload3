@@ -68,6 +68,7 @@ export default buildConfig({
       },
     }),
   ],
+
   /**
    * Payload can now accept specific translations from 'payload/i18n/en'
    * This is completely optional and will default to English if not provided
@@ -80,7 +81,11 @@ export default buildConfig({
     autoLogin: {
       email: 'dev@payloadcms.com',
       password: 'test',
-      prefillOnly: true,
+      prefillOnly: false,
+    },
+    meta: {
+      titleSuffix: '- Digital Savanna',
+      // icons:
     },
   },
   async onInit(payload) {

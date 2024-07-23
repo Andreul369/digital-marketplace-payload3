@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 import * as Icons from '@/components/icons';
 import { Button } from '@/components/ui';
-import { cn } from '@/lib/utils';
+import { cn } from '@/lib/cn';
 
 const ThemeToggle = dynamic(() => import('@/components/theme/theme-toggle'), {
   ssr: false,

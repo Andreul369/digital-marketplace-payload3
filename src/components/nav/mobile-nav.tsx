@@ -19,7 +19,7 @@ import {
 import { mobileNav } from '@/config/navConfig';
 // import { docsConfig } from '@/config/docs';
 // import { siteConfig } from '@/config/site';
-import { cn } from '@/lib/utils';
+import { cn } from '@/lib/cn';
 import { Search } from './search';
 import { ShoppingCart } from './shopping-cart';
 import { UserNav } from './user-nav';

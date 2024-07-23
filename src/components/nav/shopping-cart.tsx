@@ -24,7 +24,7 @@ import {
 import { mobileNav } from '@/config/navConfig';
 // import { docsConfig } from '@/config/docs';
 // import { siteConfig } from '@/config/site';
-import { cn, formatPrice } from '@/lib/utils';
+import { cn, formatPrice } from '@/lib/cn';
 import { Search } from './search';
 import { UserNav } from './user-nav';
 

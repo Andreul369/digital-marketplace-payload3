@@ -10,7 +10,7 @@ import {
   NavigationMenuTrigger,
 } from '@/components/ui';
 import { desktopNav } from '@/config/navConfig';
-import { cn } from '@/lib/utils';
+import { cn } from '@/lib/cn';
 import * as Icons from '../icons';
 import { Search } from './search';
 import { ShoppingCart } from './shopping-cart';
