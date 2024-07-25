@@ -24,7 +24,8 @@ import {
 import { mobileNav } from '@/config/navConfig';
 // import { docsConfig } from '@/config/docs';
 // import { siteConfig } from '@/config/site';
-import { cn, formatPrice } from '@/lib/cn';
+import { cn } from '@/lib/cn';
+import { formatPrice } from '@/lib/formatPrice';
 import { Search } from './search';
 import { UserNav } from './user-nav';
 
@@ -66,7 +67,7 @@ export function ShoppingCart() {
       <SheetTrigger asChild>
         <Button
           variant="ghost"
-          className="mr-2 px-0 text-base hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 md:hidden"
+          className="mr-2 px-0 text-base hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0"
         >
           <Icons.ShoppingCart aria-hidden className="size-6" />
         </Button>

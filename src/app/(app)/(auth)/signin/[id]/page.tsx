@@ -1,23 +1,21 @@
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 
+import EmailSignIn from '@/components/auth-forms/email-signin';
+import ForgotPassword from '@/components/auth-forms/forgot-password';
+import OauthSignIn from '@/components/auth-forms/oauth-signin';
+import PasswordSignIn from '@/components/auth-forms/password-signin';
+import SignUp from '@/components/auth-forms/signup';
+import UpdatePassword from '@/components/auth-forms/update-password';
 import * as Icons from '@/components/icons';
-import Logo from '@/components/icons/Logo';
-import { Card } from '@/components/ui';
-import EmailSignIn from '@/components/ui/AuthForms/EmailSignIn';
-import ForgotPassword from '@/components/ui/AuthForms/ForgotPassword';
-import OauthSignIn from '@/components/ui/AuthForms/OauthSignIn';
-import PasswordSignIn from '@/components/ui/AuthForms/PasswordSignIn';
-import Separator from '@/components/ui/AuthForms/Separator';
-import SignUp from '@/components/ui/AuthForms/Signup';
-import UpdatePassword from '@/components/ui/AuthForms/UpdatePassword';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui';
 import {
   getAuthTypes,
   getDefaultSignInView,
   getRedirectMethod,
   getViewTypes,
-} from '@/utils/auth-helpers/settings';
-import { createClient } from '@/utils/supabase/server';
+} from '@/lib/auth-helpers/settings';
+import { createClient } from '@/lib/supabase/server';
 
 export default async function SignIn({
   params,
@@ -57,22 +55,23 @@ export default async function SignIn({
   }
 
   return (
-    <div className="height-screen-helper flex justify-center">
-      <div className="m-auto flex w-80 max-w-lg flex-col justify-between p-3 ">
-        <div className="flex justify-center pb-12 ">
-          <Icons.Logo className="size-16" />
-        </div>
-        <Card
-          title={
-            viewProp === 'forgot_password'
+    <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
+      <div className="flex justify-center md:hidden">
+        <Icons.Logo width="64px" height="64px" />
+      </div>
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex justify-center">
+            {viewProp === 'forgot_password'
               ? 'Reset Password'
               : viewProp === 'update_password'
                 ? 'Update Password'
                 : viewProp === 'signup'
                   ? 'Sign Up'
-                  : 'Sign In'
-          }
-        >
+                  : 'Sign In'}
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
           {viewProp === 'password_signin' && (
             <PasswordSignIn
               allowEmail={allowEmail}
@@ -102,13 +101,22 @@ export default async function SignIn({
           {viewProp !== 'update_password' &&
             viewProp !== 'signup' &&
             allowOauth && (
-              <>
-                <Separator text="Third-party sign-in" />
+              <div className="mt-6 flex flex-col gap-6">
+                <div className="relative">
+                  <div className="absolute inset-0 flex items-center">
+                    <span className="w-full border-t" />
+                  </div>
+                  <div className="relative flex justify-center text-xs uppercase">
+                    <span className="bg-background px-2 text-muted-foreground">
+                      or continue with
+                    </span>
+                  </div>
+                </div>
                 <OauthSignIn />
-              </>
+              </div>
             )}
-        </Card>
-      </div>
+        </CardContent>
+      </Card>
     </div>
   );
 }

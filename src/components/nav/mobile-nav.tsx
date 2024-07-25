@@ -22,7 +22,6 @@ import { mobileNav } from '@/config/navConfig';
 import { cn } from '@/lib/cn';
 import { Search } from './search';
 import { ShoppingCart } from './shopping-cart';
-import { UserNav } from './user-nav';
 
 const ListItem = React.forwardRef<
   React.ComponentRef<'a'>,
@@ -59,9 +58,10 @@ export function MobileNav() {
         <Icons.Logo className="size-6" />
       </Link>
       <Search />
-      <React.Suspense>
+      {/* TODO: fix this. does not work in mobile nav cause client component */}
+      {/* <React.Suspense>
         <UserNav />
-      </React.Suspense>
+      </React.Suspense> */}
       <ShoppingCart />
       <Sheet open={open} onOpenChange={setOpen}>
         <SheetTrigger asChild>

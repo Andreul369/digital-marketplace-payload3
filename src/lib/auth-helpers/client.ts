@@ -3,8 +3,8 @@
 import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
 import { type Provider } from '@supabase/supabase-js';
 
-import { getURL } from '@/utils/helpers';
-import { createClient } from '@/utils/supabase/client';
+import { getURL } from '@/lib/helpers';
+import { createClient } from '@/lib/supabase/client';
 import { redirectToPath } from './server';
 
 export async function handleRequest(

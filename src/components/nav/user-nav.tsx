@@ -17,10 +17,20 @@ import {
   DropdownMenuShortcut,
   DropdownMenuTrigger,
 } from '@/components/ui';
+import { createClient } from '@/lib/supabase/server';
 
-export const UserNav = async () => {
-  const user = false;
 
+const UserNav = async () => {
+  const supabase = createClient();
+
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  console.log(user)
+  
+  
+  
   if (!user) {
     return (
       <Link href="/signin" className={buttonVariants({ variant: 'outline' })}>
@@ -95,3 +105,5 @@ export const UserNav = async () => {
     </DropdownMenu>
   );
 };
+
+export default UserNav
