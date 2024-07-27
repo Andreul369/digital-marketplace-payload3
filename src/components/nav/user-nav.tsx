@@ -18,7 +18,7 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui';
 import { createClient } from '@/lib/supabase/server';
-
+import SignOut from '../auth-forms/sign-out';
 
 const UserNav = async () => {
   const supabase = createClient();
@@ -27,10 +27,6 @@ const UserNav = async () => {
     data: { user },
   } = await supabase.auth.getUser();
 
-  console.log(user)
-  
-  
-  
   if (!user) {
     return (
       <Link href="/signin" className={buttonVariants({ variant: 'outline' })}>
@@ -63,14 +59,14 @@ const UserNav = async () => {
           <div className="flex flex-col space-y-1">
             <p className="text-sm font-medium leading-none">Example Name</p>
             <p className="text-xs leading-none text-muted-foreground">
-              example@email.com
+              {user.email}
             </p>
           </div>
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
           <DropdownMenuItem asChild>
-            <Link href={`#`}>
+            <Link href={`/account/${user.id}`}>
               <User className="mr-2 size-4" />
               <span>Profile</span>
               <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
@@ -95,15 +91,12 @@ const UserNav = async () => {
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <DropdownMenuItem asChild>
-          <Link href="/signout">
-            <LogOut className="mr-2 size-4" />
-            <span>Log out</span>
-            <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
-          </Link>
+          {/* TODO: There is a sign out function already. use that one mby? */}
+          {/* <SignOut /> */}
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );
 };
 
-export default UserNav
+export default UserNav;

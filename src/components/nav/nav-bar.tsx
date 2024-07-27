@@ -14,16 +14,11 @@ import { cn } from '@/lib/cn';
 import * as Icons from '../icons';
 import { Search } from './search';
 import { ShoppingCart } from './shopping-cart';
-import UserNav  from './user-nav';
-import { createClient } from '@/lib/supabase/server';
+import UserNav from './user-nav';
 
-const Navbar = async () => {
-
-  
-
-  
+const Navbar = () => {
   return (
-    <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-4">
+    <div className="mx-auto hidden w-full max-w-7xl items-center justify-between px-4 md:flex">
       <Link href="/">
         <Icons.Logo />
       </Link>
@@ -99,7 +94,9 @@ const Navbar = async () => {
       <div className="ml-auto flex items-center space-x-4">
         <Search />
         <ShoppingCart />
-       <Suspense fallback={<p>FALLBACK...</p>}>  <UserNav /></Suspense>
+        <Suspense fallback={<p>FALLBACK...</p>}>
+          <UserNav />
+        </Suspense>
       </div>
     </div>
   );

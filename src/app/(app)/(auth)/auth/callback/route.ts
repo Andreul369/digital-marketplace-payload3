@@ -9,9 +9,12 @@ export async function GET(request: NextRequest) {
   const requestUrl = new URL(request.url);
   const code = requestUrl.searchParams.get('code');
 
-  if (code) {
-    const supabase = createClient();
+  const supabase = createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
 
+  if (code) {
     const { error } = await supabase.auth.exchangeCodeForSession(code);
 
     if (error) {
@@ -27,9 +30,9 @@ export async function GET(request: NextRequest) {
 
   // URL to redirect to after sign in process completes
   return NextResponse.redirect(
-    // TODO: fix redirect to user id 
+    // TODO: fix redirect to user id
     getStatusRedirect(
-      `${requestUrl.origin}/account`,
+      `${requestUrl.origin}/account/${user?.id}`,
       'Success!',
       'You are now signed in.',
     ),

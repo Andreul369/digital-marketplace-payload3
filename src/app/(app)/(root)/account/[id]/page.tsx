@@ -1,9 +1,11 @@
-import React from 'react'
+import React from 'react';
 
-const AccountPage = () => {
-  return (
-    <div>AccountPage</div>
-  )
-}
+const AccountPage = ({ params }: { params: { id: string } }) => {
+  const userId = params.id;
 
-export default AccountPage
+  console.log(userId);
+
+  return <div>AccountPage</div>;
+};
+
+export default AccountPage;

@@ -1,6 +1,7 @@
 'use client';
 
 import * as React from 'react';
+import { useState } from 'react';
 import Link, { LinkProps } from 'next/link';
 import { useRouter } from 'next/navigation';
 
@@ -22,6 +23,7 @@ import { mobileNav } from '@/config/navConfig';
 import { cn } from '@/lib/cn';
 import { Search } from './search';
 import { ShoppingCart } from './shopping-cart';
+import UserNav from './user-nav';
 
 const ListItem = React.forwardRef<
   React.ComponentRef<'a'>,
@@ -49,19 +51,13 @@ const ListItem = React.forwardRef<
 });
 ListItem.displayName = 'ListItem';
 
-export function MobileNav() {
-  const [open, setOpen] = React.useState(false);
+export function MobileNav({ children }: { children: React.ReactNode }) {
+  const [open, setOpen] = useState(false);
 
   return (
     <div className="flex w-full items-center justify-between border-b p-2 md:hidden">
-      <Link href="/">
-        <Icons.Logo className="size-6" />
-      </Link>
-      <Search />
-      {/* TODO: fix this. does not work in mobile nav cause client component */}
-      {/* <React.Suspense>
-        <UserNav />
-      </React.Suspense> */}
+      {children}
+
       <ShoppingCart />
       <Sheet open={open} onOpenChange={setOpen}>
         <SheetTrigger asChild>
@@ -91,7 +87,7 @@ export function MobileNav() {
                       {!item.disabled &&
                         (item.href ? (
                           <MobileLink
-                            href={item.href}
+                            href="/"
                             onOpenChange={setOpen}
                             className="text-muted-foreground"
                           >

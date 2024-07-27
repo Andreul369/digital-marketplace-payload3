@@ -10,28 +10,8 @@ export const mobileNav = [
         items: [],
       },
       {
-        title: 'Installation',
-        href: '/docs/installation',
-        items: [],
-      },
-      {
-        title: 'components.json',
-        href: '/docs/components-json',
-        items: [],
-      },
-      {
         title: 'Theming',
         href: '/docs/theming',
-        items: [],
-      },
-      {
-        title: 'Dark mode',
-        href: '/docs/dark-mode',
-        items: [],
-      },
-      {
-        title: 'CLI',
-        href: '/docs/cli',
         items: [],
       },
     ],
@@ -55,96 +35,12 @@ export const mobileNav = [
           },
         ],
       },
-      {
-        title: 'Alert',
-        href: '/docs/components/alert',
-        items: [],
-      },
-      {
-        title: 'Alert Dialog',
-        href: '/docs/components/alert-dialog',
-        items: [],
-      },
-      {
-        title: 'Aspect Ratio',
-        href: '/docs/components/aspect-ratio',
-        items: [],
-      },
-      {
-        title: 'Avatar',
-        href: '/docs/components/avatar',
-        items: [],
-      },
-      {
-        title: 'Checkbox',
-        href: '/docs/components/checkbox',
-        items: [],
-      },
-      {
-        title: 'Collapsible',
-        href: '/docs/components/collapsible',
-        items: [],
-      },
-      {
-        title: 'Combobox',
-        href: '/docs/components/combobox',
-        items: [],
-      },
-      {
-        title: 'Command',
-        href: '/docs/components/command',
-        items: [],
-      },
-      {
-        title: 'Context Menu',
-        href: '/docs/components/context-menu',
-        items: [],
-      },
-      {
-        title: 'Data Table',
-        href: '/docs/components/data-table',
-        items: [],
-      },
-      {
-        title: 'Date Picker',
-        href: '/docs/components/date-picker',
-        items: [],
-      },
-      {
-        title: 'Dialog',
-        href: '/docs/components/dialog',
-        items: [],
-      },
-      {
-        title: 'Drawer',
-        href: '/docs/components/drawer',
-        items: [],
-      },
-      {
-        title: 'Scroll Area',
-        href: '/docs/components/scroll-area',
-        items: [],
-      },
-      {
-        title: 'Select',
-        href: '/docs/components/select',
-        items: [],
-      },
-      {
-        title: 'Separator',
-        href: '/docs/components/separator',
-        items: [],
-      },
-      {
-        title: 'Sheet',
-        href: '/docs/components/sheet',
-        items: [],
-      },
-      {
-        title: 'Zskeleton',
-        href: '/docs/components/skeleton',
-        items: [],
-      },
+
+      // {
+      //   title: 'Zskeleton',
+      //   href: '/docs/components/skeleton',
+      //   items: [],
+      // },
     ],
   },
 ];
