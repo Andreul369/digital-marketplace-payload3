@@ -28,7 +28,10 @@ import sharp from 'sharp';
 
 import {
   MediaCollection,
+  OrdersCollection,
   PagesCollection,
+  ProductFilesCollection,
+  ProductsCollection,
   UsersCollection,
 } from '@/collections';
 
@@ -38,7 +41,14 @@ const dirname = path.dirname(filename);
 export default buildConfig({
   //editor: slateEditor({}),
   editor: lexicalEditor(),
-  collections: [MediaCollection, PagesCollection, UsersCollection],
+  collections: [
+    MediaCollection,
+    OrdersCollection,
+    PagesCollection,
+    ProductFilesCollection,
+    ProductsCollection,
+    UsersCollection,
+  ],
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),
@@ -54,6 +64,9 @@ export default buildConfig({
       collections: {
         media: {
           prefix: 'media-folder',
+        },
+        product_files: {
+          prefix: 'product-files',
         },
       },
       bucket: process.env.S3_BUCKET || '',

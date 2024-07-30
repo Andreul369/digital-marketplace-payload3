@@ -62,7 +62,7 @@
   "devDependencies": {
     "@ianvs/prettier-plugin-sort-imports": "^4.3.1",
     "@payloadcms/graphql": "3.0.0-beta.67",
-    "@types/node": "^20.14.12",
+    "@types/node": "^20.14.13",
     "@types/react": "npm:types-react@19.0.0-rc.0",
     "@types/react-dom": "npm:types-react-dom@19.0.0-rc.0",
     "autoprefixer": "^10.4.19",
