@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { Balancer } from 'react-wrap-balancer';
 
 import * as Icons from '@/components/icons';
+import ProductReel from '@/components/product-reel';
 import {
   Button,
   buttonVariants,
@@ -35,12 +36,12 @@ const perks = [
 ];
 
 const HomePage = async () => {
- return (
-    <> 
+  return (
+    <>
       <h1 className="text-center text-4xl font-bold tracking-tight sm:text-6xl">
         <Balancer>
           Your marketplace for high-quality{' '}
-          <span className="text-blue-600">digital assets</span>.
+          <span className="text-primary">digital assets</span>.
         </Balancer>
       </h1>
       <p className="mt-6 max-w-prose text-center text-lg text-muted-foreground">
@@ -72,6 +73,12 @@ const HomePage = async () => {
           ))}
         </div>
       </section>
+
+      <ProductReel
+        title="Brand New"
+        subtitle="Thisi s a subtitle"
+        href="asdsdasd"
+      />
     </>
   );
 };

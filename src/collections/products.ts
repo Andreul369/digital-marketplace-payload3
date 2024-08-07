@@ -54,7 +54,7 @@ export const ProductsCollection: CollectionConfig = {
       hasMany: false,
     },
     {
-      name: 'approvedForSale',
+      name: 'approved_for_sale',
       label: 'Product Status',
       type: 'select',
       defaultValue: 'pending',
@@ -80,7 +80,7 @@ export const ProductsCollection: CollectionConfig = {
       ],
     },
     {
-      name: 'priceId',
+      name: 'price_id',
       access: {
         create: () => false,
         read: () => false,
@@ -92,7 +92,7 @@ export const ProductsCollection: CollectionConfig = {
       },
     },
     {
-      name: 'stripeId',
+      name: 'stripe_id',
       access: {
         create: () => false,
         read: () => false,

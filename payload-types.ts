@@ -99,6 +99,7 @@ export interface Media {
 export interface User {
   id: number;
   products?: (number | Product)[] | null;
+  product_files?: (number | ProductFile)[] | null;
   role: 'admin' | 'user';
   updatedAt: string;
   createdAt: string;

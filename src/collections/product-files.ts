@@ -27,29 +27,52 @@ const yourOwnAndPurchased: Access = async ({ req }) => {
 
   const { docs: orders } = await req.payload.find({
     collection: 'orders',
-    depth: 0,
+    depth: 2,
     where: {
       user: {
         equals: user.id,
       },
     },
   });
+
+  const purchasedProductFileIds = orders
+    .map((order) => {
+      return order.products.map((product) => {
+        if (typeof product === 'string')
+          return req.payload.logger.error(
+            'Search depth not sufficient to find purchased file IDs',
+          );
+        // TODO: This may need fixing. Can't test it now because there aren't any orders?
+        return typeof product.product_files === 'number'
+          ? product.product_files
+          : product.product_files.id;
+      });
+    })
+    .filter(Boolean)
+    .flat();
+
+  return {
+    id: {
+      in: [...ownProductFileIds, ...purchasedProductFileIds],
+    },
+  };
 };
 
 export const ProductFilesCollection: CollectionConfig = {
   slug: 'product_files',
-  //   admin: {
-  //     hidden: ({ user }) => user.role !== 'admin',
-  //   },
+  admin: {
+    hidden: ({ user }) => user.role !== 'admin',
+  },
   hooks: {
     beforeChange: [addUser],
   },
   access: {
     read: yourOwnAndPurchased,
   },
-  upload: {
-    mimeTypes: ['images/*', 'font/*', 'application/postscript'],
-  },
+  //   upload: {
+  //     mimeTypes: ['images/*', 'font/*', 'application/postscript'],
+  //   },
+  upload: true,
   fields: [
     // without this name text field, the page does not load / pending
     {

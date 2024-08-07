@@ -93,4 +93,6 @@ export {
   SheetDescription,
 } from './sheet';
 
+export { Skeleton } from './skeleton';
+
 export { Toaster } from './sonner';

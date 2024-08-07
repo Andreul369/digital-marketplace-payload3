@@ -12,7 +12,8 @@ const adminsAndUser: Access = ({ req: { user } }) => {
 
 export const UsersCollection: CollectionConfig = {
   slug: 'users',
-  //TODO: check the original repo for this template and stuff and fix it
+  // TODO: check the original repo for this template and stuff and fix it
+  // TODO: it does not show up
   // this is more complex
   auth: true,
 
@@ -37,16 +38,16 @@ export const UsersCollection: CollectionConfig = {
       relationTo: 'products',
       hasMany: true,
     },
-    // {
-    //   name: 'product_files',
-    //   label: 'Product files',
-    //   admin: {
-    //     condition: () => false,
-    //   },
-    //   type: 'relationship',
-    //   relationTo: 'product_files',
-    //   hasMany: true,
-    // },
+    {
+      name: 'product_files',
+      label: 'Product files',
+      admin: {
+        condition: () => false,
+      },
+      type: 'relationship',
+      relationTo: 'product_files',
+      hasMany: true,
+    },
     {
       name: 'role',
       defaultValue: 'user',

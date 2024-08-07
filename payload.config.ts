@@ -20,8 +20,6 @@ import {
   UploadFeature,
 } from '@payloadcms/richtext-lexical';
 import { s3Storage } from '@payloadcms/storage-s3';
-//import { slateEditor } from '@payloadcms/richtext-slate'
-
 import { buildConfig } from 'payload';
 import { en } from 'payload/i18n/en';
 import sharp from 'sharp';
@@ -39,7 +37,6 @@ const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
 
 export default buildConfig({
-  //editor: slateEditor({}),
   editor: lexicalEditor(),
   collections: [
     MediaCollection,
@@ -113,6 +110,8 @@ export default buildConfig({
         data: {
           email: 'dev@payloadcms.com',
           password: 'test',
+          //TODO: If you delete role, there is an error. What to do with it.
+          role: 'admin',
         },
       });
     }

@@ -61,7 +61,7 @@ export const MediaCollection: CollectionConfig = {
       { name: 'card', width: 768, height: 1024, position: 'center' },
       { name: 'tablet', width: 1024, height: undefined, position: 'center' },
     ],
-    mimeTypes: ['image/*'],
+    // mimeTypes: ['image/*'],
   },
   fields: [
     // without this name text field, the page does not load / pending
