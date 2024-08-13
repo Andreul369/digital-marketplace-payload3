@@ -8,17 +8,16 @@ interface ProductReelProps {
   title: string;
   subtitle?: string;
   href?: string;
+  limit: number;
 }
 
 const ProductReel = async (props: ProductReelProps) => {
-  const { title, subtitle, href } = props;
-  //TODO: make infinite scroll
-  const data = await getProducts();
-
-  console.log(data);
+  const { title, subtitle, href, limit } = props;
+  //TODO: make infinite scroll?
+  const data = await getProducts({ limit });
 
   return (
-    <section className="py-12">
+    <section className="w-full py-12">
       <div className="mb-4 md:flex md:items-center md:justify-between">
         <div className="max-w-2xl px-4 lg:max-w-4xl lg:px-0">
           {title ? (

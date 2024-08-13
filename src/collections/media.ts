@@ -57,18 +57,13 @@ export const MediaCollection: CollectionConfig = {
     // we optimize page loading times & image sizes in runtime (when users actually visit our app)
     imageSizes: [
       // or is it 'centre'? mispelled in the docs?
-      { name: 'thumbnail', width: 400, height: 300, position: 'center' },
-      { name: 'card', width: 768, height: 1024, position: 'center' },
-      { name: 'tablet', width: 1024, height: undefined, position: 'center' },
+      // { name: 'thumbnail', width: 400, height: 300, position: 'center' },
+      // { name: 'card', width: 768, height: 1024, position: 'center' },
+      // { name: 'tablet', width: 1024, height: undefined, position: 'center' },
     ],
-    // mimeTypes: ['image/*'],
+    mimeTypes: ['image/*'],
   },
   fields: [
-    // without this name text field, the page does not load / pending
-    {
-      name: 'text',
-      type: 'text',
-    },
     {
       name: 'user',
       type: 'relationship',

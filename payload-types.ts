@@ -32,6 +32,7 @@ export interface Config {
 export interface UserAuthOperations {
   forgotPassword: {
     email: string;
+    password: string;
   };
   login: {
     email: string;
@@ -43,6 +44,7 @@ export interface UserAuthOperations {
   };
   unlock: {
     email: string;
+    password: string;
   };
 }
 /**
@@ -51,7 +53,6 @@ export interface UserAuthOperations {
  */
 export interface Media {
   id: number;
-  text?: string | null;
   user?: (number | null) | User;
   prefix?: string | null;
   updatedAt: string;
@@ -65,32 +66,7 @@ export interface Media {
   height?: number | null;
   focalX?: number | null;
   focalY?: number | null;
-  sizes?: {
-    thumbnail?: {
-      url?: string | null;
-      width?: number | null;
-      height?: number | null;
-      mimeType?: string | null;
-      filesize?: number | null;
-      filename?: string | null;
-    };
-    card?: {
-      url?: string | null;
-      width?: number | null;
-      height?: number | null;
-      mimeType?: string | null;
-      filesize?: number | null;
-      filename?: string | null;
-    };
-    tablet?: {
-      url?: string | null;
-      width?: number | null;
-      height?: number | null;
-      mimeType?: string | null;
-      filesize?: number | null;
-      filename?: string | null;
-    };
-  };
+  sizes?: {};
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -124,13 +100,10 @@ export interface Product {
   price: number;
   category: 'ui_kits' | 'icons';
   product_files: number | ProductFile;
-  approvedForSale?: ('pending' | 'approved' | 'denied') | null;
-  priceId?: string | null;
-  stripeId?: string | null;
-  images: {
-    image: number | Media;
-    id?: string | null;
-  }[];
+  approved_for_sale: 'pending' | 'approved' | 'denied';
+  price_id?: string | null;
+  stripe_id?: string | null;
+  image?: (number | null) | Media;
   updatedAt: string;
   createdAt: string;
 }
@@ -140,7 +113,6 @@ export interface Product {
  */
 export interface ProductFile {
   id: number;
-  text?: string | null;
   user?: (number | null) | User;
   prefix?: string | null;
   updatedAt: string;
@@ -161,7 +133,7 @@ export interface ProductFile {
  */
 export interface Order {
   id: number;
-  _isPaid: boolean;
+  is_paid: boolean;
   user: number | User;
   products: (number | Product)[];
   updatedAt: string;

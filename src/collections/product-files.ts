@@ -42,6 +42,7 @@ const yourOwnAndPurchased: Access = async ({ req }) => {
           return req.payload.logger.error(
             'Search depth not sufficient to find purchased file IDs',
           );
+
         // TODO: This may need fixing. Can't test it now because there aren't any orders?
         return typeof product.product_files === 'number'
           ? product.product_files
@@ -69,16 +70,10 @@ export const ProductFilesCollection: CollectionConfig = {
   access: {
     read: yourOwnAndPurchased,
   },
-  //   upload: {
-  //     mimeTypes: ['images/*', 'font/*', 'application/postscript'],
-  //   },
-  upload: true,
+  upload: {
+    mimeTypes: ['image/*', 'font/*', 'application/postscript'],
+  },
   fields: [
-    // without this name text field, the page does not load / pending
-    {
-      name: 'text',
-      type: 'text',
-    },
     {
       name: 'user',
       type: 'relationship',

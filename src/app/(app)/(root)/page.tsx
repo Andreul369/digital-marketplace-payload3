@@ -78,6 +78,7 @@ const HomePage = async () => {
         title="Brand New"
         subtitle="Thisi s a subtitle"
         href="asdsdasd"
+        limit={4}
       />
     </>
   );

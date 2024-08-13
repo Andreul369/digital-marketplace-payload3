@@ -58,6 +58,7 @@ export const ProductsCollection: CollectionConfig = {
       label: 'Product Status',
       type: 'select',
       defaultValue: 'pending',
+      required: true,
       // only admins are able to change the options
       access: {
         create: ({ req }) => req.user?.role === 'admin',
@@ -103,20 +104,12 @@ export const ProductsCollection: CollectionConfig = {
         hidden: true,
       },
     },
+    //TODO: This does not show up as an array of images in supabase, so I will go for single image at the moment
     {
-      name: 'images',
-      label: 'Product images',
-      type: 'array',
-      minRows: 1,
-      maxRows: 4,
-      required: true,
-      labels: {
-        singular: 'Image',
-        plural: 'Images',
-      },
-      fields: [
-        { name: 'image', type: 'upload', relationTo: 'media', required: true },
-      ],
+      name: 'image',
+      label: 'Product image',
+      type: 'relationship',
+      relationTo: 'media',
     },
   ],
 };

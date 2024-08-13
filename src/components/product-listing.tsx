@@ -1,16 +1,17 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
+import { Product } from 'payload-types';
 
 import { PRODUCT_CATEGORIES } from '@/config/navConfig';
 import { cn } from '@/lib/cn';
 import { formatPrice } from '@/lib/formatPrice';
-import { Tables } from '@/types/types_db';
 import { Skeleton } from './ui';
 
 interface ProductListingProps {
-  product: Tables<'products'>;
+  product: Product;
   index: number;
 }
 
@@ -31,10 +32,6 @@ const ProductListing = ({ product, index }: ProductListingProps) => {
     ({ value }) => value === product.category,
   )?.label;
 
-  const validUrls = product.images
-    .map(({ image }) => (typeof image === 'string' ? image : image.url))
-    .filter(Boolean) as string[];
-
   if (isVisible && product) {
     return (
       <Link
@@ -44,8 +41,14 @@ const ProductListing = ({ product, index }: ProductListingProps) => {
         href={`/product/${product.id}`}
       >
         <div className="flex w-full flex-col">
-          {/* <ImageSlider urls={validUrls} /> */}
-
+          <div className="relative size-48 rounded-lg">
+            <Image
+              alt={product.name}
+              src={product.imageUrl}
+              fill
+              className="rounded-lg"
+            />
+          </div>
           <h3 className="mt-4 text-sm font-medium text-gray-700">
             {product.name}
           </h3>
@@ -59,13 +62,15 @@ const ProductListing = ({ product, index }: ProductListingProps) => {
   }
 };
 
+// TODO: The skeleton and the loaded image have different sizes.
+// You can change them by going to Slow 4G in the network tab
 const ProductPlaceholder = () => {
   return (
     <div className="flex w-full flex-col">
-      <div className="relative aspect-square w-full overflow-hidden rounded-xl bg-zinc-100">
+      <div className="relative aspect-square w-full overflow-hidden rounded-lg bg-zinc-100">
         <Skeleton className="h-full w-full" />
       </div>
-      <Skeleton className="mt-4 h-4 w-2/3 rounded-lg" />
+      <Skeleton className="mt-2 h-4 w-2/3 rounded-lg" />
       <Skeleton className="mt-2 h-4 w-16 rounded-lg" />
       <Skeleton className="mt-2 h-4 w-12 rounded-lg" />
     </div>
