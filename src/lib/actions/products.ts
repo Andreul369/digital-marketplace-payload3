@@ -1,7 +1,5 @@
 'use server';
 
-import { revalidatePath } from 'next/cache';
-
 import { createClient } from '@/lib/supabase/server';
 
 interface GetProductsParams {
@@ -41,6 +39,45 @@ export async function getProducts({ limit = 10 }: GetProductsParams) {
     });
 
     return productsWithImageUrls;
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+}
+
+interface GetProductByIdParams {
+  id: string;
+}
+
+export async function getProductById({ id }: GetProductByIdParams) {
+  console.log(id);
+  try {
+    const supabase = createClient();
+
+    const { data: product, error } = await supabase
+      .from('products')
+      .select('*, media(*)')
+      .eq('id', id)
+      .single();
+
+    let productWithImageUrl;
+    // Process product to add image URL
+    if (product) {
+      const { prefix, filename } = product.media;
+      const imagePath = `${prefix}/${filename}`;
+
+      const { data } = supabase.storage
+        .from('digital-marketplace-bucket')
+        .getPublicUrl(imagePath);
+
+      // Add the image URL to the product object
+      productWithImageUrl = {
+        ...product,
+        imageUrl: data.publicUrl,
+      };
+    }
+
+    return productWithImageUrl;
   } catch (error) {
     console.log(error);
     throw error;

@@ -7,6 +7,7 @@ import ProductListing from './product-listing';
 interface ProductReelProps {
   title: string;
   subtitle?: string;
+  category?: string;
   href?: string;
   limit: number;
 }

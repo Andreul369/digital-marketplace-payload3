@@ -65,6 +65,7 @@ export const Post = Lucide.FileText;
 export const Search = Lucide.Search;
 export const SendHorizontal = Lucide.SendHorizonal;
 export const Settings = Lucide.Settings;
+export const ShieldCheck = Lucide.ShieldCheck;
 export const ShoppingCart = Lucide.ShoppingCart;
 export const Smile = Lucide.Smile;
 export const Spinner = Lucide.Loader2;
