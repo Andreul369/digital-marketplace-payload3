@@ -11,7 +11,7 @@ import UserNav from '@/components/nav/user-nav';
 const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
     <>
-      {/* TODO: Is this the beset way to do this??? */}
+      {/* //TODO: Is this the best way to do this??? */}
       <MobileNav>
         <Link href="/">
           <Icons.Logo className="size-6" />

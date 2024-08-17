@@ -55,7 +55,7 @@ export function MobileNav({ children }: { children: React.ReactNode }) {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="flex w-full items-center justify-between border-b p-2 md:hidden">
+    <div className="flex w-full items-center justify-between border-b px-4 py-2 md:hidden">
       {children}
 
       <ShoppingCart />
@@ -63,7 +63,7 @@ export function MobileNav({ children }: { children: React.ReactNode }) {
         <SheetTrigger asChild>
           <Button
             variant="ghost"
-            className="mr-2 px-0 text-base hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 md:hidden"
+            className="px-0 text-base hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 md:hidden"
           >
             <Icons.Menu />
           </Button>

@@ -23,7 +23,12 @@ const ThemeToggle = dynamic(() => import('@/components/theme/theme-toggle'), {
 
 export const SiteFooter = ({ className }: { className?: string }) => {
   return (
-    <footer className={cn('container border-t max-w-7xl mx-auto flex items-center justify-between', className)}>
+    <footer
+      className={cn(
+        'container mx-auto flex max-w-7xl items-center justify-between border-t px-4 sm:px-6',
+        className,
+      )}
+    >
       <div>
         <Link
           href="/"
@@ -32,11 +37,10 @@ export const SiteFooter = ({ className }: { className?: string }) => {
           <Icons.Logo className="size-6" />
           <p className="text-lg font-medium md:hidden">Digital Savanna</p>
         </Link>
-
       </div>
-        <div className="col-start-2 row-start-1 flex h-12 justify-end">
-          <ThemeToggle />
-        </div>
+      <div className="col-start-2 row-start-1 flex h-12 items-center justify-center">
+        <ThemeToggle />
+      </div>
     </footer>
   );
 };

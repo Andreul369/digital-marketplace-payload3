@@ -18,7 +18,7 @@ import UserNav from './user-nav';
 
 const Navbar = () => {
   return (
-    <div className="mx-auto hidden w-full max-w-7xl items-center justify-between px-4 md:flex">
+    <div className="mx-auto hidden w-full max-w-7xl items-center justify-between px-6 md:flex">
       <Link href="/">
         <Icons.Logo />
       </Link>

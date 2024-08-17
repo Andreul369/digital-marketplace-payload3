@@ -50,7 +50,7 @@ interface GetProductByIdParams {
 }
 
 export async function getProductById({ id }: GetProductByIdParams) {
-  console.log(id);
+  //  TODO: Should this imageurl be created on upload of the image and not when fetching them? :/
   try {
     const supabase = createClient();
 

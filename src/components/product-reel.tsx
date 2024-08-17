@@ -18,7 +18,7 @@ const ProductReel = async (props: ProductReelProps) => {
   const data = await getProducts({ limit });
 
   return (
-    <section className="w-full py-12">
+    <section className="w-full px-4 py-12 sm:px-6">
       <div className="mb-4 md:flex md:items-center md:justify-between">
         <div className="max-w-2xl px-4 lg:max-w-4xl lg:px-0">
           {title ? (
