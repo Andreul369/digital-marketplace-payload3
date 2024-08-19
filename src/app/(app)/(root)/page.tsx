@@ -76,7 +76,7 @@ const HomePage = async () => {
 
       <ProductReel
         title="Brand New"
-        subtitle="Thisi s a subtitle"
+        subtitle="This is a subtitle"
         href="asdsdasd"
         limit={4}
       />

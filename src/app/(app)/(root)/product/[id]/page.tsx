@@ -6,7 +6,7 @@ import AddToCartButton from '@/components/add-to-cart-button';
 import * as Icons from '@/components/icons';
 import ProductReel from '@/components/product-reel';
 import { PRODUCT_CATEGORIES } from '@/config/navConfig';
-import { getProductById } from '@/lib/actions/products';
+import { getProductById, getProductByIdSA } from '@/lib/actions/products';
 import { formatPrice } from '@/lib/formatPrice';
 
 const BREADCRUMBS = [
@@ -15,8 +15,7 @@ const BREADCRUMBS = [
 ];
 
 const ProductPage = async ({ params }: { params: { id: string } }) => {
-  const product = await getProductById({ id: params.id });
-
+  const product = await getProductById(params.id);
   const label = PRODUCT_CATEGORIES.find(
     ({ value }) => value === product?.category,
   )?.label;
@@ -55,7 +54,7 @@ const ProductPage = async ({ params }: { params: { id: string } }) => {
         {/* Product images */}
         <div className="relative size-[400px]">
           <Image
-            src={product.imageUrl}
+            src={product.image.url}
             alt={product.name}
             fill
             className="rounded-lg"

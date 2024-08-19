@@ -17,7 +17,7 @@ interface ProductListingProps {
 
 const ProductListing = ({ product, index }: ProductListingProps) => {
   const [isVisible, setIsVisible] = useState(false);
-
+  console.log(product);
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsVisible(true);
@@ -44,7 +44,7 @@ const ProductListing = ({ product, index }: ProductListingProps) => {
           <div className="relative size-48 rounded-lg">
             <Image
               alt={product.name}
-              src={product.imageUrl}
+              src={product.image.url}
               fill
               className="rounded-lg"
             />
