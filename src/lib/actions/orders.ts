@@ -1,8 +1,9 @@
 'use server';
 
+import { headers as getHeaders } from 'next/headers';
 import config from '@payload-config';
 import { getPayloadHMR } from '@payloadcms/next/utilities';
-import { Product } from 'payload-types';
+import { User } from 'payload-types';
 
 const payload = await getPayloadHMR({
   config,
@@ -25,4 +26,9 @@ export async function createOrder({
   });
 
   return order;
+}
+
+export async function getUser(): Promise<User | null> {
+  const headers = getHeaders();
+  return (await payload.auth({ headers })).user;
 }

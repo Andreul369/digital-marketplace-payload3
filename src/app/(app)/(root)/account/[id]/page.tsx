@@ -1,11 +1,11 @@
 import React from 'react';
 
-import { createClient } from '@/lib/supabase/server';
+import { getUser } from '@/lib/actions/orders';
 
 const AccountPage = async ({ params }: { params: { id: string } }) => {
   const userId = params.id;
-  const supabase = await createClient();
-  const user = await supabase.auth.getUser();
+
+  const user = await getUser();
   console.log(user);
 
   return <div>AccountPage</div>;
