@@ -27,8 +27,3 @@ export async function createOrder({
 
   return order;
 }
-
-export async function getUser(): Promise<User | null> {
-  const headers = getHeaders();
-  return (await payload.auth({ headers })).user;
-}
