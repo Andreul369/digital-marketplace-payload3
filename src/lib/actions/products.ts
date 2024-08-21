@@ -51,3 +51,15 @@ export async function getProductById(productId: string) {
 
   return data;
 }
+
+export async function getProductsFromCart(productIds) {
+  try {
+    const { docs: products } = await payload.find({
+      collection: 'products',
+      where: {
+        id: { in: productIds },
+      },
+    });
+    return products;
+  } catch (error) {}
+}

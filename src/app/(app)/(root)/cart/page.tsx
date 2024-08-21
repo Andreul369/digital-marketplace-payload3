@@ -11,6 +11,8 @@ import { PRODUCT_CATEGORIES } from '@/config/navConfig';
 import { useCart } from '@/hooks/use-cart';
 import { cn } from '@/lib/cn';
 import { formatPrice } from '@/lib/formatPrice';
+import { getStripe } from '@/lib/stripe/client';
+import { checkoutWithStripe } from '@/lib/stripe/server';
 
 const Cartpage = () => {
   const { items, removeItem } = useCart();
@@ -32,6 +34,11 @@ const Cartpage = () => {
   );
 
   const fee = 1;
+  const handleStripeCheckout = async (productIds) => {
+    const { sessionId } = await checkoutWithStripe(productIds);
+    // const stripe = await getStripe();
+    // stripe?.redirectToCheckout({ sessionId });
+  };
 
   return (
     <div>
@@ -189,7 +196,7 @@ const Cartpage = () => {
             <div className="mt-6">
               <Button
                 // disabled={items.length === 0 || isLoading}
-                // onClick={() => createCheckoutSession({ productIds })}
+                onClick={() => handleStripeCheckout(productIds)}
                 className="w-full"
                 size="lg"
               >

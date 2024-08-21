@@ -15,7 +15,10 @@
     "generate:types": "payload generate:types",
     "generate:schema": "payload-graphql generate:schema",
     "standalone-script": "payload run ./src/scripts/standalone-script.ts",
-    "generate:importmap": "payload generate:importmap"
+    "generate:importmap": "payload generate:importmap",
+    "stripe:login": "stripe login",
+    "stripe:listen": "stripe listen --forward-to=localhost:3000/api/stripe",
+    "stripe:fixtures": "stripe fixtures fixtures/stripe-fixtures.json"
   },
   "engines": {
     "node": "^18.20.2 || >=20.9.0"
@@ -37,13 +40,14 @@
     "@radix-ui/react-select": "^2.1.1",
     "@radix-ui/react-separator": "^1.1.0",
     "@radix-ui/react-slot": "^1.1.0",
-    "@supabase/ssr": "^0.4.0",
+    "@stripe/stripe-js": "^2.4.0",
+    "@supabase/ssr": "^0.4.1",
     "@supabase/supabase-js": "^2.45.1",
     "babel-plugin-react-compiler": "0.0.0-experimental-696af53-20240625",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "cross-env": "^7.0.3",
-    "embla-carousel-react": "^8.1.8",
+    "embla-carousel-react": "^8.2.0",
     "graphql": "^16.9.0",
     "lucide-react": "^0.408.0",
     "next": "15.0.0-canary.104",
@@ -55,6 +59,7 @@
     "react-wrap-balancer": "^1.1.1",
     "sharp": "0.32.6",
     "sonner": "^1.5.0",
+    "stripe": "^16.8.0",
     "supabase": "^1.190.0",
     "tailwind-merge": "^2.5.2",
     "tailwindcss-animate": "^1.0.7",

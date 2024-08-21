@@ -44,6 +44,7 @@ export const UsersCollection: CollectionConfig = {
       admin: {
         condition: () => false,
       },
+
       type: 'relationship',
       relationTo: 'product_files',
       hasMany: true,

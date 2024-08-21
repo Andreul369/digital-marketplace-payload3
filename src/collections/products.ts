@@ -1,6 +1,16 @@
+import { BeforeChangeHook } from 'node_modules/payload/dist/collections/config/types';
 import { CollectionConfig } from 'payload';
+import { Product } from 'payload-types';
 
 import { PRODUCT_CATEGORIES } from '@/config/navConfig';
+import { stripe } from '@/lib/stripe/config';
+
+const addUser: BeforeChangeHook<Product> = async ({ req, data }) => {
+  const user = req.user;
+
+  // TODO: this should be user.id not user?.id why does user.id NOT work?
+  return { ...data, user: user?.id };
+};
 
 export const ProductsCollection: CollectionConfig = {
   slug: 'products',
@@ -9,6 +19,47 @@ export const ProductsCollection: CollectionConfig = {
   },
   // access: {},
   // fields that the table will have
+  hooks: {
+    beforeChange: [
+      addUser,
+      async (args) => {
+        if (args.operation === 'create') {
+          const data = args.data as Product;
+
+          const createdProduct = await stripe.products.create({
+            name: data.name,
+            default_price_data: {
+              currency: 'USD',
+              unit_amount: Math.round(data.price * 100),
+            },
+          });
+
+          const updated: Product = {
+            ...data,
+            stripe_id: createdProduct.id,
+            price_id: createdProduct.default_price as string,
+          };
+
+          return updated;
+        } else if (args.operation === 'update') {
+          const data = args.data as Product;
+
+          const updatedProduct = await stripe.products.update(data.stripe_id!, {
+            name: data.name,
+            default_price: data.price_id!,
+          });
+
+          const updated: Product = {
+            ...data,
+            stripe_id: updatedProduct.id,
+            price_id: updatedProduct.default_price as string,
+          };
+
+          return updated;
+        }
+      },
+    ],
+  },
   fields: [
     {
       name: 'user',
